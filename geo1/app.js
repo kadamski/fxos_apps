@@ -8,10 +8,11 @@ function geo(output) {
 
     function _success(position) {
         var c = position.coords;
+        var date = new Date(position.timestamp);
         var latitude  = c.latitude;
         var longitude = c.longitude;
 
-        var h  = '<ul><li>Time: ' + position.timestamp;
+        var h  = '<ul><li>Time: ' + date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
         h += ' <li>Latitude: ' + latitude + ' °';
         h += ' <li>Longitude: ' + longitude +  '°';
         h += ' <li>Accuracy: ' + c.accuracy + ' m';
