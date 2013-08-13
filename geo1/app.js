@@ -1,3 +1,32 @@
+function setupInstallBtn() {
+    if (!navigator.mozApps) {
+        return;
+    }
+
+    var _install = function () {
+        var request = navigator.mozApps.install('http://k.japko.eu/tmp/fxos_test/geo1/manifest.webapp');
+        request.onsucces = function() {
+            document.getElementById('install').style.cssText="display: none";
+        }
+        request.onerror = function() {
+            document.getElementById('install').innerHTML="Install error" + this.error.name;
+        }
+    }
+
+    var request = navigator.mozApps.getSelf();
+    request.onsuccess = function() {
+        var installDiv = document.getElementById('install');
+        if(!this.result) {
+            document.getElementById('installBtn').addEventListener("click", _install);
+            installDiv.style.cssText="";
+        }
+    }
+    request.onerror = function() {
+        document.getElementById('install').innerHTML="Install error";
+    }
+}
+
+
 
 function geo(output) {
     output.innerHTML = "<p>Locating…</p>";
@@ -47,6 +76,7 @@ function main() {
         return;
     }
 
+    setupInstallBtn();
     geo(msgDiv);
 }
 
