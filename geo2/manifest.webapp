@@ -1,0 +1,16 @@
+{
+    "name": "geo2",
+    "description": "Geolocation test 2",
+    "launch_path": "/tmp/fxos_test/geo2/",
+    "installs_allowed_from": ["*"],
+    "version": "0.0.1",
+    "developer": {
+        "name": "Krzysztof Adamski",
+        "url": "http://k.japko.eu/"
+    },
+    "permissions": {
+        "geolocation": { 
+            "description": "des"
+        }
+    }
+}
