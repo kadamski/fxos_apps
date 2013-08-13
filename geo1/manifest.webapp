@@ -1,7 +1,7 @@
 {
     "name": "geo1",
     "description": "Geolocation test 1",
-    "launch_path": "/tmp/fxos_test/geo1/",
+    "launch_path": "/index.html",
     "installs_allowed_from": ["*"],
     "version": "0.0.2",
     "developer": {

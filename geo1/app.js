@@ -4,7 +4,7 @@ function setupInstallBtn() {
     }
 
     var _install = function () {
-        var request = navigator.mozApps.install('http://k.japko.eu/tmp/fxos_test/geo1/manifest.webapp');
+        var request = navigator.mozApps.install('http://geo1.k.japko.eu/manifest.webapp');
         request.onsucces = function() {
             document.getElementById('install').style.cssText="display: none";
         }
