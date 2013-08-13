@@ -3,7 +3,7 @@
     "description": "Geolocation test 2",
     "launch_path": "/index.html",
     "installs_allowed_from": ["*"],
-    "version": "0.0.1",
+    "version": "0.0.2",
     "developer": {
         "name": "Krzysztof Adamski",
         "url": "http://k.japko.eu/"
