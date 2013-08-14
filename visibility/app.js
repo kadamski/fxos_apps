@@ -1,9 +1,5 @@
 function handleVisibilityChange() {
-    if(document.hidden) {
-        document.getElementById('out').innerHTML+='hidden ';
-    } else {
-        document.getElementById('out').innerHTML+='visible ';
-    }
+    document.getElementById('out').innerHTML+='<br>'+document.hidden+","+document.visibilityState;
 }
 
 function main() {
