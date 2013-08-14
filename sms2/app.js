@@ -11,17 +11,24 @@ function main() {
         var sms = window.navigator.mozSms;
         var text=document.getElementById('text').value;
         var number=document.getElementById('number').value;
-        var req=sms.send(number, text);
-        req.onsuccess = function() {
-            processMsg(this.result);
+        var numbers=number.split(';');
+        if(numbers.length) {
+            var req=sms.send(numbers, text);
+            console.log(req);
+            for(var i=0; i < req.length; i++) {
+                req[i].onsuccess = function() {
+                    processMsg(this.result);
+                    }
+            }
         }
-        req.onerror = function() {alert("ERR: " + this.error.name);};
     }
     function _clickTo() {
         var a = new MozActivity({ name: "pick", data: { type: "webcontacts/contact" }});
         a.onsuccess = function() { 
             var c=this.result;
-            document.getElementById('number').value=c.number;
+            var n=document.getElementById('number')
+            if(n.value) { n.value+=';'; }
+            n.value+=c.number;
         };
         a.onerror = function() { alert("Can't pick contact list!"); };
     }
