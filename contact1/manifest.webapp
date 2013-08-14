@@ -1,5 +1,5 @@
 {
-    "name": "Contacttest,
+    "name": "Contacttest",
     "description": "Contact pick test",
     "launch_path": "index.html",
     "installs_allowed_from": ["*"],
