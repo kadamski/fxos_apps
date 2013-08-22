@@ -12,7 +12,12 @@
     "permissions":  {
         "sms": {
             "description": "des"
-        }
+        },
+        "contacts": {
+            "description": "des",
+            "access": "readonly"
+        },
+        "storage":{ "description": "blah" }
     }
 
 }
