@@ -8,6 +8,7 @@ function processMsg(m) {
 
 function main() {
     function _clickSend() {
+        saveText();
         var sms = window.navigator.mozSms;
         var text=document.getElementById('text').value;
         var con=document.getElementById('contacts').getElementsByTagName('LI');;
@@ -40,8 +41,14 @@ function main() {
         };
         a.onerror = function() { alert("Can't pick contact list!"); };
     }
+    function _clickClear() {
+        if(confirm("Clear text area?")) {
+            clearText();
+        }
+    }
     document.getElementById('send').addEventListener('click', _clickSend);
 //    document.getElementById('to').addEventListener('click', _clickTo);
+    document.getElementById('clear').addEventListener('click', _clickClear);
     showContacts(document.getElementById('contacts'));
 }
 
@@ -74,8 +81,27 @@ function showContacts(ul) {
     };
 }
 
+function restoreText() {
+    var text=document.getElementById('text');
+
+    console.log("retore" + localStorage.getItem("text"));
+    text.value=localStorage.getItem("text") || "";
+}
+
+function saveText() {
+    var text=document.getElementById('text');
+    console.log("save" + text.value);
+    localStorage.setItem("text", text.value);
+}
+
+function clearText() {
+    var text=document.getElementById('text');
+    text.value="";
+    saveText();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     main();
+    restoreText();
+    setInterval(saveText, 5000);
 })
