@@ -5,31 +5,25 @@
 
     <title></title>
     <meta name="description" content="SMS">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /> 
-    <style>
-input,textarea,li {
-  font-size: 22px;
-}
-input[type=checkbox] {
-    -moz-transform: scale(2);
-    margin-right: 10px;
-}
-li {
-    padding: 5px;
-}
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
 
-    </style>
+  <link rel="stylesheet"  href="style/jquery.mobile-1.3.2.min.css">
+  <script src="lib/jquery-1.9.1.min.js"></script>
+  <script src="lib/jquery.mobile-1.3.2.js"></script>
+
   </head>
   <body>
-    <div><ul id=contacts></ul></div>
-<!--
-    <input type=button id=to value=To>
-    <input type=text id=number>
--->
+    <div id=contacts>
+        <select id="contacts-select" name="contacts-select" multiple="multiple" data-native-menu="false">
+            <option data-placeholder="true">Choose contacts:</option>
+        </select>
+    </div>
+
     <textarea id=text></textarea>
-    <div><input type=submit id=send value=Send></div>
-    <br>
-    <div><input type=submit id=clear value=clear></div>
+    <div data-type="horizontal" data-role="controlgroup">
+        <input type=submit id=send value=Send>
+        <input type=button id=clear value=clear>
+    </div>
     <div><ul id=out></ul></div>
     <script type="text/javascript" src="app.js"></script>
   </body>

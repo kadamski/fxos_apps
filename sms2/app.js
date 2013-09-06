@@ -11,16 +11,10 @@ function main() {
         saveText();
         var sms = window.navigator.mozSms;
         var text=document.getElementById('text').value;
-        var con=document.getElementById('contacts').getElementsByTagName('LI');;
-        var i, cb, numbers=[];
-        for(i=0; i<con.length; i++) {
-            cb=con[i].getElementsByTagName('input')[0];
-            if(!cb.checked) {
-                continue;
-            }
-            numbers.push(cb.value);
-            console.log(cb.value);
-        }
+        var numbers=$('#contacts-select option:selected').map(function() {
+            return this.getAttribute('data-tel');
+        }).get();
+        console.log(numbers.toString());
         if(numbers.length>0) {
             var req=sms.send(numbers, text);
             console.log(req);
@@ -53,27 +47,24 @@ function main() {
 }
 
 function showContacts(ul) {
-    var contacts, all, i, filter, count=0;
+    var contacts, all, i, filter, count=0, html='';
 
     contacts=navigator.mozContacts;
     request=contacts.getAll({ sortBy: 'givenName', sortOrder: 'ascending' });
     request.onsuccess = function () {
-        var c, li, checkbox, text;
+        var c;
         if(this.result) {
             c=this.result;
-            li=document.createElement("LI");
-            checkbox=document.createElement("INPUT");
-            checkbox.type="checkbox";
-            checkbox.value=c.tel[0].value;
-            checkbox.name="tel";
-            checkbox.style.display="inline";
-            checkbox.setAttribute('data-tel', c.tel[0].value);
-            checkbox.id="tel"+(count++);
-            li.appendChild(checkbox);
-            ul.appendChild(li);
-            text=document.createTextNode([c.givenName, c.familyName].join(' '));
-            li.appendChild(text);
+            for(var i=0; i<1; i++) {
+                html+=[
+                       '<option id="tel', count++, '" data-tel="', 
+                       c.tel[0].value, '">', c.givenName, c.familyName,
+                       '</option>'
+                      ].join(' ');
+            }
             this.continue();
+        } else {
+            $('#contacts-select').append(html).selectmenu('refresh');
         }
     };
     request.onerror = function (err) {
@@ -105,3 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
     restoreText();
     setInterval(saveText, 5000);
 })
+
+$(document).bind("mobileinit", function(){
+  $.extend( $.mobile , {
+    maxTransitionWidth: 1,
+    defaultDialogTransition: "none",
+    defaultPageTransition: "none"
+  });
+});
