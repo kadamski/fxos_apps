@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title></title>
+    <meta name="description" content="Geo test 3">
+    <meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="lib/leaflet-0.6.4/leaflet.css" />
+    <style>
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, section {
+    height: 100%;
+}
+header {
+    height: 2em;
+    margin-top: 3px;
+    text-align: center;
+}
+input[type="submit"] {
+    width: 35px;
+}
+input[type="text"] {
+    width: 22%;
+}
+#map {
+    height: calc(100% - 2em);
+}
+    </style>
+  </head>
+  <body>
+    <section>
+        <header>
+            <span class="input">
+                <label for="lat">Lat:</label>
+                <input type="text" id="lat">
+            </span>
+            <span class="input">
+                <label for="lon">Lon:</label>
+                <input type="text" id="lon">
+            </span>
+            <span class="ok">
+                <input type="submit" value="OK">
+            </span>
+        </header>
+        <div id="map"></div>
+    </section>
+    <script type="text/javascript" src="lib/leaflet-0.6.4/leaflet.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
