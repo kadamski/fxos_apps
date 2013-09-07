@@ -6,8 +6,8 @@ var app = (function(T) {
     var _a = null;
 
     var _resize = function () {
-        _c.width = window.innerWidth;
-        _c.height = window.innerHeight;
+        _c.width = window.screen.width;
+        _c.height = window.screen.height-20;
         _t.redraw();
     };
 
@@ -29,6 +29,7 @@ var app = (function(T) {
         _t = timerWidget(_c);
         _c.addEventListener("finished", _finished);
         _a = document.getElementById('s1');
+        window.screen.addEventListener('mozorientationchange', _resize);
         _t.setTime(1*60);
         _resize();
     };
