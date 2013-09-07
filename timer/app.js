@@ -3,6 +3,7 @@ var app = (function(T) {
 
     var _c = null;
     var _t = null;
+    var _a = null;
 
     var _resize = function () {
         _c.width = window.innerWidth;
@@ -11,13 +12,23 @@ var app = (function(T) {
     };
 
     var _finished = function () {
-        alert("END");
+        var stop = false;
+        _a.addEventListener('ended', function() {
+            if(!stop) {
+                this.play();
+            }
+        }, false);
+        _a.play();
+        alert("ALARM!");
+        stop = true;
+        _a.pause();
     };
 
     var init = function (canv) {
         _c = canv;
         _t = timerWidget(_c);
         _c.addEventListener("finished", _finished);
+        _a = document.getElementById('s1');
         _t.setTime(1*60);
         _resize();
     };
