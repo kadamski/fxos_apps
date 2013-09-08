@@ -1,0 +1,19 @@
+{
+    "name": "alarm1",
+    "description": "Alarm API test",
+    "launch_path": "/index.html",
+    "installs_allowed_from": ["*"],
+    "version": "0.0.1",
+    "developer": {
+        "name": "Krzysztof Adamski",
+        "url": "http://k.japko.eu/"
+    },
+    "type": "certified",
+    "messages": [
+      { "alarm": "/index.html" }
+    ],
+    "permissions": {
+        "alarms": {"description": "alarm" },
+        "attention": {}
+    }
+}
