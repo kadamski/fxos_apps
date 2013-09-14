@@ -15,19 +15,19 @@ var app = (function(T) {
     };
 
     var init = function (canv) {
-        var cpuWakeLock = navigator.requestWakeLock('screen'),
-            request;
+        var request;
 
         navigator.mozSetMessageHandler("alarm", function (mozAlarm) { 
             console.log("alarm!");
+
             var protocol = window.location.protocol;
             var host = window.location.host;
             window.open(protocol + '//' + host + '/ring.html', 'ring_screen', 'attention');
-            cpuWakeLock.unlock();
         });
 
         request = navigator.mozAlarms.getAll();
         request.onsuccess = function () {
+            console.log("Alarms:");
             this.result.forEach(function (alarm) {
                 console.log('Id: ' + alarm.id);
                 console.log('date: ' + alarm.date);
