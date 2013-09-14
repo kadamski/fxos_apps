@@ -1,13 +1,6 @@
 var app = (function(T) {
     'use strict';
 
-    var  _handleVisibilityChange = function () {
-        if(document.hidden) {
-            _fire(10000);
-            window.close();
-        }
-    };
-
     var _fire = function (time) {
         var d = new Date((new Date()).getTime() + time),
             request = navigator.mozAlarms.add(d, "ignoreTimezone", {'bla': 1});
@@ -42,8 +35,7 @@ var app = (function(T) {
                 console.log('data: ' + JSON.stringify(alarm.data));
             });
         };
-        document.addEventListener("visibilitychange", _handleVisibilityChange);
-
+        document.getElementById('button').onclick = function () {_fire(10000);window.close();};
     };
 
     return {
